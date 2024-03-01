@@ -46,7 +46,7 @@ export default class terminalUtil{
     }
 
     static async esperarEnter(): Promise<void> {
-        terminal.white('\n Pressione ENTER para continuar...')
+        terminal.white('\n Pressione enter para continuar...')
         await terminal.inputField({ echo: false}).promise
     }
 
