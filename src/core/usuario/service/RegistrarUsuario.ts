@@ -19,7 +19,7 @@ export default class RegistrarUsuario implements CasoDeUso<Usuario, void>{
             senha: senhaCripto
         }        
 
-        repo.inserir(Usuario)
-        console.log(`\n\n${senhaCripto}`)
+        repo.inserir(novoUsuario)
+        console.log(`\n\n${JSON.stringify(senhaCripto)}`)
     }
 }
