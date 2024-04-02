@@ -3,7 +3,6 @@ import Usuario from "../model/Usuario";
 export default class RepositorioUsuarioEmMemoria{
     private static readonly items: Usuario[] = []
 
-
     async inserir(usuario: Usuario){
         const items = RepositorioUsuarioEmMemoria.items   
         const usuarioExistente = await this.buscarPorEmail(usuario.email)
