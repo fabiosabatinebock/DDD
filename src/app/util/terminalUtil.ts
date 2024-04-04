@@ -16,17 +16,13 @@ export default class terminalUtil{
 
     static async campoRequerido(label: string, valorPadrao: string = ''): Promise<string>{
         terminal.yellow(`\n${label}`)
-        const valor = await terminal.inputField({
-            default: valorPadrao
-        }).promise
+        const valor = await terminal.inputField({default: valorPadrao}).promise
         if (valor) return valor
         return terminalUtil.campoRequerido(label)
     }
 
     static async menu(opcoes: string[]): Promise<[number, string]>{
-        const resposta = await terminal.singleColumnMenu(
-            opcoes
-        ).promise
+        const resposta = await terminal.singleColumnMenu(opcoes).promise
         return [resposta.selectedIndex, resposta.selectedText]
     }
 
@@ -38,10 +34,7 @@ export default class terminalUtil{
 
     static async confirmacao(texto: string): Promise<boolean> {
         terminal.yellow(`\n ${texto}`)
-        const resposta = await terminal.singleLineMenu([
-            'Sim', 
-            'Não'
-        ]).promise
+        const resposta = await terminal.singleLineMenu(['Sim', 'Não']).promise
         return resposta.selectedIndex === 0
     }
 
