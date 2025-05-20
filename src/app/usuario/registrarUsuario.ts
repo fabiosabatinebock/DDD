@@ -2,6 +2,7 @@ import Usuario from "@/core/usuario/model/Usuario";
 import terminalUtil from "../util/terminalUtil";
 import RegistrarUsuario from "@/core/usuario/service/RegistrarUsuario";
 import SenhaCripto from "@/adapter/auth/SenhaCripto";
+import RepositorioUsuarioEmMemoria from "@/adapter/db/RepositorioUsuarioEmMemoria";
 
 export default async function registrarUsuario(){
     terminalUtil.titulo("Registrar Usuário")
@@ -12,10 +13,9 @@ export default async function registrarUsuario(){
 
     const usuario: Usuario = {nome, email, senha}
 
+    const repositorio = new RepositorioUsuarioEmMemoria()
     const provedorCripto = new SenhaCripto() 
-    //new EspacoSenhaCripto()
-    //new InverterSenhaCripto
-    const CasoDeUso = new RegistrarUsuario(provedorCripto)
+    const CasoDeUso = new RegistrarUsuario(repositorio, provedorCripto)
 
     await CasoDeUso.executar(usuario)
 
